@@ -8,3 +8,7 @@ export const getUserByEmail = asyncHandler(async (req: Request<{ email: string }
     const user = await userService.getUserByEmail(req.params.email);
     resp.status(200).json(user);
 });
+export const getUsers = asyncHandler(async (req: Request<{ email: string }>, resp: Response) => {
+    const user = await userService.getUsers();
+    resp.status(200).json(user);
+});

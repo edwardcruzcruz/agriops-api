@@ -8,4 +8,11 @@ export class UserService {
 
         return {user};
     }
+    async getUsers(){
+        return {
+            data:users,
+            success: true,
+            message: ''
+        };
+    }
 }
