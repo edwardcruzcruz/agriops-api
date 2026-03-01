@@ -6,8 +6,16 @@ import { authMiddleware } from "./middlewares/auth.middleware";
 import { errorMiddleware } from "./middlewares/error.middleware";
 
 const app = express();
-
+const cors = require("cors");
 app.use(express.json());
+
+app.use(
+  cors({
+    origin: "http://localhost:5173", // your frontend URL
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    credentials: true, // only needed if using cookies
+  })
+);
 
 /*app.get("/", (req, res) => {
   res.send("Hello World!!!");
