@@ -1,18 +1,15 @@
-import users from "../data/datamock";
+import { UserRepository } from "../repositories/user.repository";
 import { AppError } from "../utils/AppError";
 
 export class UserService {
+    private userRepository = new UserRepository();
     async getUserByEmail(email: string){
-        const user = users.find(u => u.email = email);
+        const user = this.userRepository.findByEmail(email);
         if(!user) throw new AppError("User not found",404);
 
         return {user};
     }
     async getUsers(){
-        return {
-            data:users,
-            success: true,
-            message: ''
-        };
+        return this.userRepository.getAll();
     }
 }
