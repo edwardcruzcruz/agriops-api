@@ -26,6 +26,6 @@ export class UserRepository {
             SELECT * FROM users
         `);
 
-        return stmt.get() as User[] | undefined
+        return stmt.all() as User[] | undefined
     }
 }
