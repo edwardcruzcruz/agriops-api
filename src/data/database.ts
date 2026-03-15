@@ -1,6 +1,8 @@
 import Database from "better-sqlite3";
 
-const db = new Database("database.db");
+const dbFile = process.env.DB_FILE || "database.db";
+
+const db = new Database(dbFile);
 db.exec(`
     CREATE TABLE IF NOT EXISTS users (
         id TEXT PRIMARY KEY,

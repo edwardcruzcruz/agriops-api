@@ -1,8 +1,12 @@
 import request from "supertest";
 import app from "../../src/app";
-import users from "../../src/data/datamock";
+import db from "../../src/data/database";
 
 describe("User E2E", () => {
+    beforeEach(() => {
+      db.exec("DELETE FROM users");
+    });
+
     it("should get user information using email", async () => {
         await request(app)
         .post("/auth/register")

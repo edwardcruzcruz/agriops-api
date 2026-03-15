@@ -1,6 +1,11 @@
 import { AuthService } from "../../src/services/auth.service";
+import db from "../../src/data/database";
 
 describe("AuthService", () => {
+    beforeEach(() => {
+      db.exec("DELETE FROM users");
+    });
+
     const service = new AuthService();
     it("Should register a new user", async () => {
         const user = await service.register("edward.cruzcruz27041996@gmail.com","ecruz123")

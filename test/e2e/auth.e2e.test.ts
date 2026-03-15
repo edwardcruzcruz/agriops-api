@@ -1,7 +1,12 @@
 import request from "supertest"
 import app from "../../src/app";
+import db from "../../src/data/database";
 
 describe("Auth E2E", () => {
+    beforeEach(() => {
+      db.exec("DELETE FROM users");
+    });
+
     it("should register and login", async () => {
         await request(app)
         .post("/auth/register")
